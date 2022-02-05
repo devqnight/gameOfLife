@@ -10,7 +10,7 @@ alive = '\u2588'
 dead = ' '
 
 def check_args(n, args):
-    if n != len(args) or n > 3:
+    if n != len(args) or n > 4:
         sys.exit(1)
 
 def displayGrid(grid, gen):
@@ -27,10 +27,10 @@ def genGrid(rows, columns):
 def testCenter(posx, posy, rows, columns):
     return posx == int(rows / 2) and posy == int(columns / 2)
 
-def initLife(grid, rows, columns):
+def initLife(grid, rows, columns, scarcity):
     for x in enumerate(grid):
         for y in enumerate(x[1]):
-            if randint(0,1) == 1:
+            if randint(0,scarcity) == 1:
                 grid[randint(0,rows-1)][randint(0,columns-1)] = alive
 
 def updateCell(grid, row, column, neighbours, actual):
@@ -72,8 +72,9 @@ def run(args):
     clear()
     rows = int(args[1])
     columns = int(args[2])
+    scarcity = int(args[3])
     grid = genGrid(rows, columns)
-    initLife(grid, rows, columns)
+    initLife(grid, rows, columns, scarcity)
     do_life(grid, rows, columns, 0)
 
 if __name__ == "__main__" :
