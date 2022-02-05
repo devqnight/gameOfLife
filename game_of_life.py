@@ -32,9 +32,6 @@ def initLife(grid, rows, columns):
         for y in enumerate(x[1]):
             if randint(0,1) == 1:
                 grid[randint(0,rows-1)][randint(0,columns-1)] = alive
-            #if testCenter(posx, posy, rows, columns) or testCenter(posx, posy, rows-1, columns-1) or testCenter(posx, posy, rows+1, columns+1) :
-                #print("generating life")
-                #grid[posx][posy] = "*"
 
 def updateCell(grid, row, column, neighbours, actual):
     if actual == alive :
@@ -70,7 +67,6 @@ def do_life(grid, rows, columns, gen):
         check_for_life(grid, rows, columns)
         gen += 1
         sleep(0.05)
-        #n = input("next gen...")
 
 def run(args):
     clear()
